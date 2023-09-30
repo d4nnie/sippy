@@ -1,0 +1,38 @@
+{
+    "name": "conan",
+    "build": { "dockerfile": "Dockerfile" },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "cheshirekow.cmake-format",
+                "cschlosser.doxdocgen",
+                "dnlytras.nord-wave",
+                "eamodio.gitlens",
+                "jeff-hykin.better-cpp-syntax",
+                "ms-azuretools.vscode-docker",
+                "ms-python.black-formatter",
+                "ms-python.python",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cpptools-themes",
+                "shardulm94.trailing-spaces",
+                "twxs.cmake",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "vscodevim.vim",
+                "xaver.clang-format"
+            ]
+        }
+    },
+
+    "remoteUser": "dannie",
+    "capAdd": ["SYS_PTRACE"],
+    "forwardPorts": [3000],
+
+    "runArgs": [
+        "--ulimit",
+        "nofile=1024:1048576"
+    ]
+}
