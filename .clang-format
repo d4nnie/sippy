@@ -1,0 +1,266 @@
+---
+Language: Cpp
+
+# 0. Put a newline at the end of the file.
+
+InsertNewlineAtEOF: true
+
+# 1. Always use a 4-space indent instead of tabs and never use tabs!
+
+UseTab: Never
+
+IndentWidth: 4
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+
+# 2. Do not write lines longer than 120 characters.
+
+ColumnLimit: 100
+
+# 3. We prefer to consider pointers and references as the type, so write pointer and reference
+# specifiers w/o a space after the type.
+
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# 4. East const rulez!
+#
+# Write:
+#     int const i;
+#     char const* c;
+#     std::string const& ref;
+#
+# Instead of:
+#     const int i;
+#     const char* c;
+#     const std::string& ref;
+#
+# More about:
+#
+# https://isocpp.org/wiki/faq/const-correctness#const-ref-alt
+
+QualifierAlignment: Right
+
+# 5. Use only one (!) empty line as a separator between logic blocks. Do not put empty line in the
+# start of blocks.
+
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# 6. Break a too long function arguments/parameters list (or other statements/expressions with
+# brackets) on several lines. Break after the first argument/parameter. Don't break after the
+# opening bracket! Align each line with the first argument/parameter.
+#
+# Examples:
+#
+# func(firstArgument,
+#      secondArgument,
+#      thirdArgument);
+#
+# if (firstFlag &&
+#     secondFlag &&
+#     thirdFlag);
+
+AlignAfterOpenBracket: Align
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# 7. Break multiline math/logical expressions after binary operators and align their operands.
+
+# Example:
+# int aaa = bbbbbbbbbbbbbbb +
+#           ccccccccccccccc;
+
+AlignOperands: DontAlign
+BreakBeforeBinaryOperators: None
+
+# 8. Align backslashes in multiline macro definitions.
+
+AlignEscapedNewlines: Left
+
+# 9. Other alignments are optional.
+
+AlignConsecutiveAssignments: Consecutive
+
+AlignArrayOfStructures: None
+AlignConsecutiveBitFields: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: None
+
+AlignTrailingComments:
+    Kind: Never
+
+# 10. Do not indent the content of a namespace.
+# 11. Always put a comment with the name of the namespace after the namespace end.
+
+FixNamespaceComments: true
+NamespaceIndentation: None
+ShortNamespaceLines: 0
+
+# 12. Do not indent case and goto labels.
+
+IndentCaseLabels: false
+IndentGotoLabels: false
+
+# 13. Indent preprocessor directives after hash.
+#
+# Example:
+#
+# #if FOO
+# #    if BAR
+# #        include <foo>
+# #    endif
+# #endif
+
+IndentPPDirectives: AfterHash
+
+# 14. Do not indent access modifiers in classes/structs.
+
+IndentAccessModifiers: false
+AccessModifierOffset: -4
+
+# 15. Put an empty line before an access modifier if there is content between them.
+
+EmptyLineBeforeAccessModifier: LogicalBlock
+
+# 16. Always write the template<...> keyword on its own line.
+
+AlwaysBreakTemplateDeclarations: Yes
+
+# 17. Break a too long ternary operator expression after the ? operator.
+
+BreakBeforeTernaryOperators: false
+
+# 18. Break too long string literals.
+#
+# Example:
+#
+# aaaa = "bbbb"
+#        "cccc";
+
+AlwaysBreakBeforeMultilineStrings: false
+BreakStringLiterals: true
+
+# 19. Prefer to write the function return type on the same line with the function name and
+# parameters. If it isn't possible 'cause of ColumnLimit, do not indent the function name and
+# parameters.
+
+AlwaysBreakAfterReturnType: None
+IndentWrappedFunctionNames: false
+
+# 20. Always attach curly braces to surrounding context, i.e. always write opening/closing braces
+# and attached statements/switch-cases on the same line.
+
+BreakBeforeBraces: Attach
+
+# 21. Write short lambda functions on a single line.
+
+AllowShortLambdasOnASingleLine: All
+
+# 22. Do not split empty blocks.
+
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+
+# 23. Break too long constructor initializers list and inheritance list. Write the comma on a new
+# line.
+#
+# Example:
+#
+# MyPrettyClass()
+#     : BaseClass{}
+#     , mAttribute1{}
+#     , mAttribute2{}
+
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+
+# 24. Write short loops/ifs/switch-cases/etc on a new line.
+
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: Never
+CompactNamespaces: false
+
+# 25. Split includes into three categories: standard headers, third-party headers, project headers.
+# Separate these categories using an empty line.
+# 26. Sort includes alphabetically.
+# 27. Prefer using C++ standard library headers instead of C standard library headers, i.e. use
+# cassert not assert.h.
+
+SortIncludes: true
+IncludeBlocks: Regroup
+
+IncludeCategories:
+    - Regex: "<(algorithm|any|array|assert.h|atomic|barrier|bit|bitset|cassert|cctype|cerrno|cfenv|cfloat|charconv|chrono|cinttypes|climits|clocale|cmath|codecvt|compare|complex|complex.h|concepts|condition_variable|coroutine|csetjmp|csignal|cstdarg|cstddef|cstdint|cstdio|cstdlib|cstring|ctime|ctype.h|cuchar|cwchar|cwctype|deque|errno.h|exception|execution|expected|fenv.h|filesystem|flat_map|flat_set|float.h|format|forward_list|fstream|functional|future|generator|hazard_pointer|initializer_list|inttypes.h|iomanip|ios|iosfwd|iostream|iso646.h|istream|iterator|latch|limits|limits.h|list|locale|locale.h|map|math.h|mdspan|memory|memory_resource|mutex|new|numbers|numeric|optional|ostream|print|queue|random|ranges|ratio|rcu|regex|scoped_allocator|semaphore|set|setjmp.h|shared_mutex|signal.h|source_location|span|spanstream|sstream|stack|stacktrace|stdalign.h|stdarg.h|stdatomic.h|stdbool.h|stddef.h|stdexcept|stdfloat|stdint.h|stdio.h|stdlib.h|stop_token|streambuf|string|string.h|string_view|strstream|syncstream|system_error|text_encoding|tgmath.h|thread|time.h|tuple|type_traits|typeindex|typeinfo|uchar.h|unordered_map|unordered_set|utility|valarray|variant|vector|version|wchar.h|wctype.h)>"
+      Priority: 2
+      SortPriority: 0
+    - Regex: "<.*>"
+      Priority: 3
+      SortPriority: 0
+    - Regex: ".*"
+      Priority: 1
+      SortPriority: 0
+
+# 28. Do not put spaces into the braced list.
+
+Cpp11BracedListStyle: true
+
+# 29. If it's possible, write constuctor initializers on a single line with the parameters list.
+#
+# Example:
+#
+# Constructor() : a(), b()
+#
+# but
+#
+# Constructor()
+#     : aaaaaaaaaaaaaaaaaaaa()
+#     , bbbbbbbbbbbbbbbbbbbb()
+#     , cccccccccccccccccccc()
+
+PackConstructorInitializers: NextLine
+
+# 30. Do not write comment messages longer than ColumnLimit.
+
+ReflowComments: true
+
+# 31. Separate each definition block by an empty line.
+
+SeparateDefinitionBlocks: Always
+
+# 32. Put one extra space:
+#
+# - before the curly brace that opens a new block;
+# - after a c-style cast, like (int) false;
+# - before and after the assignment operator;
+# - before and after the constructor initializer list colon;
+# - before and after the inheritance list colon;
+# - before trailing comments and one extra space after // before the comment message;
+# - before round brackets in control statements (for, while, if, switch, catch);
+# - after the colon in a for-each loop.
+
+SpaceAfterCStyleCast: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpacesBeforeTrailingComments: 1
+
+SpaceBeforeParens: ControlStatements
+
+SpaceBeforeRangeBasedForLoopColon: false
+SpaceBeforeCaseColon: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpacesInSquareBrackets: false
+SpacesInAngles: Never
+
+SpacesInLineCommentPrefix:
+    Minimum: 1
+    Maximum: -1
+# 33. To be more pedantic and C++2x-compatible prefer using std::size_t, std::uint64_t and
+# other numeric types defined in cstdint header, do not use C-style size_t, uint64_t, etc.
