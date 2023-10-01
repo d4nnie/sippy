@@ -1,2 +1,2 @@
-add_executable(TestParser ../main.cpp)
-target_link_libraries(TestParser PRIVATE gtest::gtest)
+test_suit(test.method test_method.cpp)
+test_suit(test.version test_version.cpp)
