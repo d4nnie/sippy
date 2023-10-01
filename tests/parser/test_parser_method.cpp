@@ -2,12 +2,12 @@
 #include <gtest/gtest.h>
 #include <parser/grammar/method.hpp>
 
-using namespace sipphony;
+using namespace sippy::parser;
 using namespace std::string_literals;
 
 namespace variant2 = boost::variant2;
 
-TEST(TestMethodInvite, UpperCase) {
+TEST(TestParserMethodInvite, UpperCase) {
     auto raw = "INVITE"s;
     grammar::method<decltype(raw)::iterator> parser{};
     sip::method_t result{};
@@ -19,7 +19,7 @@ TEST(TestMethodInvite, UpperCase) {
     ASSERT_TRUE(variant2::get_if<sip::invite_t>(&result));
 }
 
-TEST(TestMethodInvite, LowerCase) {
+TEST(TestParserMethodInvite, LowerCase) {
     auto raw = "invite"s;
     grammar::method<decltype(raw)::iterator> parser{};
     sip::method_t result{};
@@ -31,7 +31,7 @@ TEST(TestMethodInvite, LowerCase) {
     ASSERT_TRUE(variant2::get_if<sip::invite_t>(&result));
 }
 
-TEST(TestMethodRegister, UpperCase) {
+TEST(TestParserMethodRegister, UpperCase) {
     auto raw = "REGISTER"s;
     grammar::method<decltype(raw)::iterator> parser{};
     sip::method_t result{};
@@ -43,7 +43,7 @@ TEST(TestMethodRegister, UpperCase) {
     ASSERT_TRUE(variant2::get_if<sip::register_t>(&result));
 }
 
-TEST(TestMethodRegister, LowerCase) {
+TEST(TestParserMethodRegister, LowerCase) {
     auto raw = "register"s;
     grammar::method<decltype(raw)::iterator> parser{};
     sip::method_t result{};
@@ -55,10 +55,11 @@ TEST(TestMethodRegister, LowerCase) {
     ASSERT_TRUE(variant2::get_if<sip::register_t>(&result));
 }
 
-TEST(TestMethodError, Failed) {
+TEST(TestParserMethodError, Unknown) {
     auto raw = "Hello, World!"s;
     grammar::method<decltype(raw)::iterator> parser{};
     sip::method_t result{};
     auto begin = raw.begin();
-    ASSERT_THROW({ qi::parse(begin, raw.end(), parser, result); }, sipphony::unknown_method_error);
+    ASSERT_THROW({ qi::parse(begin, raw.end(), parser, result); },
+                 sippy::parser::unknown_method_error);
 }

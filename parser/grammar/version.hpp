@@ -1,5 +1,5 @@
-#ifndef SIPPHONY_PARSER_GRAMMAR_VERSION_HPP
-#define SIPPHONY_PARSER_GRAMMAR_VERSION_HPP
+#ifndef SIPPY_PARSER_GRAMMAR_VERSION_HPP
+#define SIPPY_PARSER_GRAMMAR_VERSION_HPP
 
 #include "parser/grammar/qi.hpp"
 #include "parser/parser.hpp"
@@ -7,7 +7,7 @@
 
 #include <format>
 
-namespace sipphony::grammar::symbols {
+namespace sippy::parser::grammar::details {
 
 struct version : qi::symbols<char, sip::version_t> {
     version() {
@@ -15,9 +15,9 @@ struct version : qi::symbols<char, sip::version_t> {
     }
 };
 
-} // namespace sipphony::grammar::symbols
+} // namespace sippy::parser::grammar::details
 
-namespace sipphony::grammar {
+namespace sippy::parser::grammar {
 
 template<class IteratorT>
 class version : public qi::grammar<IteratorT, sip::version_t()> {
@@ -33,10 +33,10 @@ private:
             std::format("Unknown version: \"{}\"! Parser failure.", std::string_view{begin, end})};
     }
 
-    qi::rule<IteratorT, sip::version_t()> start_;
-    symbols::version version_;
+    qi::rule<IteratorT, sip::version_t()> start_{};
+    details::version version_{};
 };
 
-} // namespace sipphony::grammar
+} // namespace sippy::parser::grammar
 
 #endif

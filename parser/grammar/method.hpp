@@ -1,5 +1,5 @@
-#ifndef SIPPHONY_PARSER_GRAMMAR_METHOD_HPP
-#define SIPPHONY_PARSER_GRAMMAR_METHOD_HPP
+#ifndef SIPPY_PARSER_GRAMMAR_METHOD_HPP
+#define SIPPY_PARSER_GRAMMAR_METHOD_HPP
 
 #include "parser/grammar/qi.hpp"
 #include "parser/parser.hpp"
@@ -7,7 +7,7 @@
 
 #include <format>
 
-namespace sipphony::grammar::symbols {
+namespace sippy::parser::grammar::details {
 
 struct method : qi::symbols<char, sip::method_t> {
     method() {
@@ -16,9 +16,9 @@ struct method : qi::symbols<char, sip::method_t> {
     }
 };
 
-} // namespace sipphony::grammar::symbols
+} // namespace sippy::parser::grammar::details
 
-namespace sipphony::grammar {
+namespace sippy::parser::grammar {
 
 template<class IteratorT>
 class method : public qi::grammar<IteratorT, sip::method_t()> {
@@ -34,10 +34,10 @@ private:
             std::format("Unknown method: \"{}\"! Parser failure.", std::string_view{begin, end})};
     }
 
-    qi::rule<IteratorT, sip::method_t()> start_;
-    symbols::method method_;
+    qi::rule<IteratorT, sip::method_t()> start_{};
+    details::method method_{};
 };
 
-} // namespace sipphony::grammar
+} // namespace sippy::parser::grammar
 
 #endif

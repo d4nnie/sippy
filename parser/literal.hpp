@@ -1,9 +1,9 @@
-#ifndef SIPPHONY_PARSER_LITERAL_HPP
-#define SIPPHONY_PARSER_LITERAL_HPP
+#ifndef SIPPY_PARSER_LITERAL_HPP
+#define SIPPY_PARSER_LITERAL_HPP
 
 #include <cstdint>
 
-namespace sipphony {
+namespace sippy::parser {
 
 template<std::size_t SizeT>
 struct string {
@@ -70,6 +70,6 @@ using to_lower_t = decltype(details::to_lower(T{}));
 template<class T>
 using to_upper_t = decltype(details::to_upper(T{}));
 
-} // namespace sipphony
+} // namespace sippy::parser
 
 #endif

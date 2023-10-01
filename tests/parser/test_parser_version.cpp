@@ -2,12 +2,12 @@
 #include <gtest/gtest.h>
 #include <parser/grammar/version.hpp>
 
-using namespace sipphony;
+using namespace sippy::parser;
 using namespace std::string_literals;
 
 namespace variant2 = boost::variant2;
 
-TEST(TestVersion20, UpperCase) {
+TEST(TestParserVersion20, UpperCase) {
     auto raw = "SIP/2.0"s;
     grammar::version<decltype(raw)::iterator> parser{};
     sip::version_t result{};
@@ -19,7 +19,7 @@ TEST(TestVersion20, UpperCase) {
     ASSERT_TRUE(variant2::get_if<sip::sip20_t>(&result));
 }
 
-TEST(TestVersion20, LowerCase) {
+TEST(TestParserVersion20, LowerCase) {
     auto raw = "sip/2.0"s;
     grammar::version<decltype(raw)::iterator> parser{};
     sip::version_t result{};
@@ -31,10 +31,11 @@ TEST(TestVersion20, LowerCase) {
     ASSERT_TRUE(variant2::get_if<sip::sip20_t>(&result));
 }
 
-TEST(TestVersionError, Failed) {
+TEST(TestParserVersionError, UnknownVersion) {
     auto raw = "SIP/3.0"s;
     grammar::version<decltype(raw)::iterator> parser{};
     sip::version_t result{};
     auto begin = raw.begin();
-    ASSERT_THROW({ qi::parse(begin, raw.end(), parser, result); }, sipphony::unknown_version_error);
+    ASSERT_THROW({ qi::parse(begin, raw.end(), parser, result); },
+                 sippy::parser::unknown_version_error);
 }

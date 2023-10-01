@@ -1,5 +1,5 @@
-#ifndef SIPPHONY_PARSER_GRAMMAR_QI_HPP
-#define SIPPHONY_PARSER_GRAMMAR_QI_HPP
+#ifndef SIPPY_PARSER_GRAMMAR_QI_HPP
+#define SIPPY_PARSER_GRAMMAR_QI_HPP
 
 #include <boost/phoenix/phoenix.hpp>
 #include <boost/spirit/include/qi.hpp>

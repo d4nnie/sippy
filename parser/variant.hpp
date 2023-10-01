@@ -1,12 +1,12 @@
-#ifndef SIPPHONY_PARSER_VARIANT_HPP
-#define SIPPHONY_PARSER_VARIANT_HPP
+#ifndef SIPPY_PARSER_VARIANT_HPP
+#define SIPPY_PARSER_VARIANT_HPP
 
 #include <boost/variant2/variant.hpp>
 
-namespace sipphony::details {
+namespace sippy::parser::details {
 
 using boost::variant2::variant;
 
-} // namespace sipphony::details
+} // namespace sippy::parser::details
 
 #endif
